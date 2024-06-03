@@ -1,15 +1,9 @@
 <template>
-    <div>
-        {{ map }}
-        <h1 className="text-3xl font-bold underline bg-red-500">
-            Hello world!
-        </h1>
-    </div>
+  <div>
+    <Game />
+  </div>
 </template>
 
 <script setup>
-import { useMapStore } from './store'
-
-const { map } = useMapStore()
-
+import Game from "./components/game/Game.vue";
 </script>
