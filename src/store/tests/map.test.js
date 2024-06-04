@@ -6,12 +6,16 @@ describe("map", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
-  it("should", () => {
-    const { map, setMap } = useMapStore();
+  it("should setup map", () => {
+    const { map, setupMap } = useMapStore();
 
-    const newMap = [1, 1, 1]
+    const newMap = [
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+    ];
 
-    setMap(newMap)
+    setupMap(newMap);
 
     expect(map).toEqual(newMap);
   });

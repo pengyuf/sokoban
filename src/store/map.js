@@ -14,12 +14,17 @@ export const useMapStore = defineStore("map", () => {
     [1, 1, 1, 1, 1],
   ];
 
-  function setMap(newMap) {
-    map = newMap
+  function setupMap(newMap) {
+    map = map.splice(0, map.length, ...newMap);
+  }
+
+  function isWall(postion) {
+    return map[postion.x][postion.y] == MapTile.WALL;
   }
 
   return {
     map,
-    setMap
+    setupMap,
+    isWall,
   };
 });
