@@ -6,7 +6,7 @@ export const MapTile = {
 };
 
 export const useMapStore = defineStore("map", () => {
-  const map = [
+  let map = [
     [1, 1, 1, 1, 1],
     [1, 2, 2, 2, 1],
     [1, 2, 2, 2, 1],
@@ -14,7 +14,12 @@ export const useMapStore = defineStore("map", () => {
     [1, 1, 1, 1, 1],
   ];
 
+  function setMap(newMap) {
+    map = newMap
+  }
+
   return {
     map,
+    setMap
   };
 });
