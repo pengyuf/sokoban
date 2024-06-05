@@ -15,11 +15,11 @@ export const useMapStore = defineStore("map", () => {
   ];
 
   function setupMap(newMap) {
-    map = map.splice(0, map.length, ...newMap);
+    map.splice(0, map.length, ...newMap);
   }
 
   function isWall(postion) {
-    return map[postion.x][postion.y] == MapTile.WALL;
+    return map[postion.x][postion.y] === MapTile.WALL;
   }
 
   return {

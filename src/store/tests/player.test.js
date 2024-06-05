@@ -10,8 +10,13 @@ describe("player", () => {
 
   describe("normal move", () => {
     beforeEach(() => {
-      const { setupMap } = useMapStore();
-      setupMap([2, 2, 2], [2, 2, 2], [2, 2, 2]);
+      const { map, setupMap } = useMapStore();
+      setupMap([
+        [2, 2, 2, 2],
+        [2, 2, 2, 2],
+        [2, 2, 2, 2],
+        [2, 2, 2, 2]
+      ]);
     });
     it("should move left", () => {
       const { player, movePlayerToLeft } = usePlayerStore();
@@ -46,15 +51,13 @@ describe("player", () => {
   describe("collision wall", () => {
     beforeEach(() => {
       const { setupMap } = useMapStore();
-      let newMap = [
+      setupMap([
         [1, 1, 1, 1, 1],
         [1, 2, 2, 2, 1],
         [1, 2, 2, 2, 1],
         [1, 2, 2, 2, 1],
         [1, 1, 1, 1, 1],
-      ];
-
-      setupMap(newMap);
+      ]);
     });
 
     it("collision wall when move to left", () => {
@@ -63,6 +66,27 @@ describe("player", () => {
       player.y = 1;
       movePlayerToLeft();
       expect(player.x).toBe(1);
+    });
+    it("collision wall when move to right", () => {
+      const { player, movePlayerToRight } = usePlayerStore();
+      player.x = 3;
+      player.y = 1;
+      movePlayerToRight();
+      expect(player.x).toBe(3);
+    });
+    it("collision wall when move to Down", () => {
+      const { player, movePlayerToDown } = usePlayerStore();
+      player.x = 3;
+      player.y = 3;
+      movePlayerToDown();
+      expect(player.y).toBe(3);
+    });
+    it("collision wall when move to Up", () => {
+      const { player, movePlayerToUp } = usePlayerStore();
+      player.x = 3;
+      player.y = 1;
+      movePlayerToUp();
+      expect(player.y).toBe(1);
     });
   });
 });

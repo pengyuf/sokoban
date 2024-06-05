@@ -9,10 +9,10 @@ beforeEach(() => {
   setActivePinia(createPinia());
 });
 
-it.skip("should move to left when press ArrowLeft", () => {
+it("should move to left when press ArrowLeft", () => {
   const { setupMap } = useMapStore();
 
-  setupMap([2, 2, 2], [2, 2, 2], [2, 2, 2]);
+  setupMap([[2, 2, 2], [2, 2, 2], [2, 2, 2]]);
 
   const { player } = usePlayerStore();
   player.x = 1;

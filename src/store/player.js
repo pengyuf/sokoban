@@ -10,7 +10,6 @@ export const usePlayerStore = defineStore("player", () => {
 
   function movePlayerToLeft() {
     const { isWall } = useMapStore();
-
     if (isWall({ x: player.x - 1, y: player.y })) {
       return;
     }
@@ -19,14 +18,26 @@ export const usePlayerStore = defineStore("player", () => {
   }
 
   function movePlayerToRight() {
+    const { isWall } = useMapStore();
+    if (isWall({ x: player.x + 1, y: player.y })) {
+      return;
+    }
     player.x += 1;
   }
 
   function movePlayerToDown() {
+    const { isWall } = useMapStore();
+    if (isWall({ x: player.x, y: player.y + 1 })) {
+      return;
+    }
     player.y += 1;
   }
 
   function movePlayerToUp() {
+    const { isWall } = useMapStore();
+    if (isWall({ x: player.x, y: player.y - 1 })) {
+      return;
+    }
     player.y -= 1;
   }
 
