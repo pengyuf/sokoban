@@ -10,28 +10,11 @@ import { ref, reactive, toRefs, onMounted, getCurrentInstance, computed } from '
 import keeperImg from '../../assets/keeper.png'
 import { usePlayerStore } from '../../store/player';
 import { useMove } from './player'
+import { usePosition } from '../../composables/usePosition'
 
 useMove()
-const { postion } = usePosition()
-
-
-function usePosition() {
-    const { player } = usePlayerStore()
-
-    const STEP = 32
-    const postion = computed(() => {
-        return {
-            left: player.x * STEP + 'px',
-            top: player.y * STEP + 'px',
-        }
-    })
-
-    return {
-        postion
-    }
-}
-
-
+const { player } = usePlayerStore()
+const { postion } = usePosition(player)
 
 </script>
 
