@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-
-import { ref, reactive, toRefs, onMounted, getCurrentInstance, computed } from 'vue'
 import keeperImg from '../../assets/keeper.png'
 import { usePlayerStore } from '../../store/player';
 import { useMove } from './player'

@@ -5,18 +5,15 @@
 </template>
 
 <script setup>
-
-import { ref, reactive, toRefs, onMounted, getCurrentInstance, computed } from 'vue'
 import cargoImg from '../../assets/cargo.png'
-import { usePlayerStore } from '../../store/player';
 import { usePosition } from '../../composables/usePosition';
 
-const cargo = {
-    x: 2,
-    y: 2
-}
+const props = defineProps({
+    cargo: Object,
+    required: true
+})
 
-const { postion } = usePosition(cargo)
+const { postion } = usePosition(props.cargo)
 
 
 
