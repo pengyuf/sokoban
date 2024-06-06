@@ -8,12 +8,14 @@
 import targetImg from '../../assets/target.png'
 import { usePosition } from '../../composables/usePosition';
 
-const target = {
-    x: 3,
-    y: 3
-}
+const props = defineProps({
+    target: {
+        type: Object,
+        required: true
+    }
+})
 
-const { postion } = usePosition(target)
+const { postion } = usePosition(props.target)
 
 
 
