@@ -8,6 +8,7 @@
     <div v-for="(cargo, index) in cargos" :key="index">
       <Cargo :cargo="cargo" />
     </div>
+    <button @click="backStep">后退一步</button>
   </div>
 </template>
 
@@ -19,10 +20,11 @@ import Target from "./Target.vue";
 import { useCargoStore } from "../../store/cargo";
 import { useTargetStore } from "../../store/target";
 import { watch } from "vue";
-import { isFinishGame } from '../../store/game'
+import { isFinishGame, useGameStore } from '../../store/game'
 
 const { cargos } = useCargoStore()
 const { targets } = useTargetStore()
+const { backStep } = useGameStore()
 
 watch(cargos, () => {
   if (isFinishGame()) {

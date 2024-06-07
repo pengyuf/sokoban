@@ -20,7 +20,7 @@ const { isTargetPos } = useTargetStore()
 
 const img = ref(keeperImg)
 
-watch(player, (newPos) => {
+watch(player, (newPos,oldPos) => {
     if (isTargetPos(newPos)) {
         img.value = keeperOnTargetImg
     } else {

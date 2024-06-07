@@ -45,7 +45,6 @@ export const usePlayerStore = defineStore("player", () => {
         return
       }
     }
-
     player.x += 1;
   }
 
