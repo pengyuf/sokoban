@@ -1,27 +1,21 @@
 import { defineStore } from "pinia";
+import { useGameStore } from "./game";
 
 export const MapTile = {
-  FLOOR: 2,
   WALL: 1,
+  FLOOR: 2
 };
 
 export const useMapStore = defineStore("map", () => {
-  let map = [
-    [1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 1, 1, 1, 1],
-  ];
+  let { map } = useGameStore()
 
   function setupMap(newMap) {
     map.splice(0, map.length, ...newMap);
   }
 
   function isWall(postion) {
-    return map[postion.x][postion.y] === MapTile.WALL;
+    // x,y翻转
+    return map[postion.y][postion.x] === MapTile.WALL;
   }
 
   return {

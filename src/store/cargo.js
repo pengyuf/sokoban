@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import { useMapStore } from "./map";
+import { useGameStore } from "./game";
 import { reactive } from "vue";
 
 export const useCargoStore = defineStore("cargo", () => {
-    const cargos = reactive([{ x: 3, y: 3 },{ x: 2, y: 2 }])
+    const { cargos } = useGameStore()
 
     function setupCargos(newCargos) {
         cargos.splice(0, cargos.length, ...newCargos)

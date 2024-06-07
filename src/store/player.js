@@ -1,14 +1,12 @@
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
 import { useMapStore } from "./map";
 import { useCargoStore } from "./cargo";
+import { useGameStore } from './game';
+import { reactive } from "vue";
 
 
 export const usePlayerStore = defineStore("player", () => {
-  const player = reactive({
-    x: 1,
-    y: 1,
-  });
+  const { player } = useGameStore()
 
   function movePlayerToLeft() {
     const { isWall } = useMapStore();

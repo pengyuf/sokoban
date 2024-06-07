@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
+import { useGameStore } from "./game";
 import { reactive } from "vue";
 
 export const useTargetStore = defineStore("target", () => {
-    const targets = reactive([{ x: 4, y: 4 }, { x: 3, y: 4 }])
+    const { targets } = useGameStore()
 
     function setupTargets(newTargets) {
         targets.splice(0, targets.length, ...newTargets)

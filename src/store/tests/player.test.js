@@ -93,6 +93,26 @@ describe("player", () => {
     });
   });
 
+  describe("collision wall when wall inside", () => {
+    beforeEach(() => {
+      const { setupMap } = useMapStore();
+      setupMap([
+        [1, 1, 1, 1, 1],
+        [1, 2, 1, 2, 1],
+        [1, 2, 2, 2, 1],
+        [1, 2, 2, 2, 1],
+        [1, 1, 1, 1, 1],
+      ]);
+    });
+    it("collision wall when move to right", () => {
+      const { player, movePlayerToRight } = usePlayerStore();
+      player.x = 1;
+      player.y = 1;
+      movePlayerToRight();
+      expect(player.x).toBe(1);
+    });
+  });
+
   describe('player push cargo', () => {
     beforeEach(() => {
       const { setupMap } = useMapStore();
